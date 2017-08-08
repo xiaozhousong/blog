@@ -57,7 +57,7 @@
             </a>
           </li>
           <li class="">
-            <a href="">
+            <a href="{{ route('manage.dashboard') }}">
               <i class="fa fa-tachometer" aria-hidden="true"></i>
               Dashboard
             </a>
