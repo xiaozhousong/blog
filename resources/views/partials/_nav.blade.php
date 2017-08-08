@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="topNavBar">
         <ul class="nav navbar-nav">
           <li class="">
-            <a href="{{ url('/albums') }}">
+            <a href="{{ url('/') }}">
               <i class="fa fa-newspaper-o" aria-hidden="true"></i>
               News
             </a>
@@ -23,64 +23,63 @@
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
+          @if(Auth::guest())
+          <li class="">
+            <a href="{{ route('login') }}"
+                onclick=>
+                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                Login
+            </a>
 
-            <li class="">
-              <a href="">
-              Hello
-              </a>
-            </li>
-            <li class="">
-              <a href="">
-                <i class="fa fa-tachometer" aria-hidden="true"></i>
-                Dashboard
-              </a>
-            </li>
-            <li class="">
-              <a href=""
-                  onclick="">
-                  <i class="fa fa-sign-in" aria-hidden="true"></i>
-                  Login
-              </a>
+            <form id="" action="" method="POST" style="display: none;">
+               
+            </form>
+  
+          </li>
 
-              <form id="" action="" method="POST" style="display: none;">
-                 
-              </form>
-    
-            </li>
+          <li class="">
+            <a href="{{ route('register') }}"
+                onclick="">
+                <i class="fa fa-registered" aria-hidden="true"></i>
+                Register
+            </a>
 
-            <li class="">
-              <a href=""
-                  onclick="">
-                  <i class="fa fa-sign-out" aria-hidden="true"></i>
-                  Logout
-              </a>
+            <form id="" action="" method="POST" style="display: none;">
+               
+            </form>
+  
+          </li>
 
-              <form id="" action="" method="POST" style="display: none;">
-                 
-              </form>
-    
-            </li>
+          @else
+          <li class="">
+            <a href="">
+              Hello {{ Auth::user()->name }}
+            </a>
+          </li>
+          <li class="">
+            <a href="">
+              <i class="fa fa-tachometer" aria-hidden="true"></i>
+              Dashboard
+            </a>
+          </li>
 
-             <li class="">
-              <a href=""
-                  onclick="">
-                  <i class="fa fa-registered" aria-hidden="true"></i>
-                  Register
-              </a>
+          <li class="">
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                Logout
+            </a>
 
-              <form id="" action="" method="POST" style="display: none;">
-                 
-              </form>
-    
-            </li>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                {{ csrf_field() }}
+            </form>
+  
+          </li>
 
+          @endif
 
         </ul>
-
-
-
-    
-    
 
   </div>
 </nav>
