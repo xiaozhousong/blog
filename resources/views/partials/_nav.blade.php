@@ -56,12 +56,40 @@
               Hello {{ Auth::user()->name }}
             </a>
           </li>
-          <li class="">
-            <a href="{{ route('manage.dashboard') }}">
-              <i class="fa fa-tachometer" aria-hidden="true"></i>
-              Dashboard
-            </a>
-          </li>
+          @role('superadministrator')
+              <li class="">
+                <a href="{{ route('manage.index') }}">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i>
+                  Manage User
+                </a>
+              </li>
+          @endrole
+          @role('superadministrator')
+              <li class="">
+                <a href="{{ route('post.index') }}">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i>
+                  Posts Dashboard
+                </a>
+              </li>
+          @endrole
+          @role('administrator')
+              <li class="">
+                <a href="{{ route('post.index') }}">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i>
+                  Posts Dashboard
+                </a>
+              </li>
+          @endrole
+          @role('user')
+              <li class="">
+                <a href="{{ route('post.index') }}">
+                  <i class="fa fa-tachometer" aria-hidden="true"></i>
+                  Posts Dashboard
+                </a>
+              </li>
+          @endrole
+
+          
 
           <li class="">
             <a href="{{ route('logout') }}"

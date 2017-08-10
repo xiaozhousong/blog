@@ -1,4 +1,4 @@
-@extends('layouts.manage')
+@extends('layouts.app')
 
 @section('content')
 
@@ -10,6 +10,11 @@
             <h3>{{ $user->email }}</h3>
 
             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-default">Edit</a>
+
+            {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'DELETE']) !!}
+            {!! Form::submit('Delete', ['class' => 'btn btn-default']) !!}
+            {!! Form::close() !!}
+
             
         </div>
     </div>

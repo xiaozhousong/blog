@@ -18,13 +18,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::prefix('manage')->middleware('role:superadministrator|administrator')->group(function(){
-	Route::get('/', 'ManageController@index');
-	Route::get('/dashboard', 'ManageController@dashboard')->name('manage.dashboard');
+Route::prefix('manage')->middleware('role:superadministrator')->group(function(){
+	
+	Route::get('/', 'UserController@index');
+	Route::get('/dashboard', 'UserController@index')->name('manage.index');
 	Route::resource('/users','UserController');
-	
-	
-
 });
+Route::prefix('post')->middleware('role:superadministrator|administrator|user')->group(function(){
+	
+	Route::get('/', 'PostController@index')->name('post.index');
+	Route::resource('/managepost','PostController');
+	
+});
+
+

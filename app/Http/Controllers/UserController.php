@@ -21,7 +21,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::paginate(3);
-        return view('manage.users.index', ['users' => $users]);
+        return view('manage.index', ['users' => $users]);
     }
 
     /**
@@ -111,7 +111,6 @@ class UserController extends Controller
         $user->password = Hash::make('password');
 
         $user->save();
-        // return redirect()->route('users.show', $user->id);
 
         if($user->save()){
             return redirect()->route('users.show', $user->id);
@@ -129,6 +128,18 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+
+        $user->delete();
+
+        return redirect()->route('manage.index');
+
+        // if($user->destroy()){
+        //     Session::flash('success','The user is successfully delete');
+        //     return redirect()->route('manage.users.index');
+        // }else{
+        //     Session::flash('danger', 'Sorry, there is an error');
+        //     return redirect()->route('manage.users.index');
+        // }
     }
 }

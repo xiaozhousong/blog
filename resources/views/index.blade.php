@@ -1,21 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+
+@section('content')
+
+<div class="container">
 
 
-  @include('partials._head')
- 
-  <body>
+<div class="row">
+@foreach($posts as $post)
+	<div class="col-sm-6 col-md-4">
 
-    @include('partials._nav')   
-      
-      <div class="container"> 
+		<div class="thumbnail">
+			<img src="{{ $post->logo }}" alt="Responsive image" class="img-responsive">
+			<div class="caption">
+			<h3>{{$post->title}}</h3>
+			<p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+			</div>
+		</div>
+	</div>
+@endforeach
+</div>
 
-          @yield('content')
-          
-      </div>
 
-    @yield('scripts')
-    
-  </body>
 
-</html>
+</div>
+
+
+
+
+@endsection

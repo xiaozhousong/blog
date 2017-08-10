@@ -8359,6 +8359,13 @@ nav.navbar.navbar-inverse {
   padding-right: 15%;
 }
 
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #fff;
+  background-color: #222;
+}
+
 .m-t-5 {
   margin-top: 5px !important;
 }
@@ -8741,5 +8748,9 @@ nav.navbar.navbar-inverse {
 
 .p-r-100 {
   padding-right: 100px !important;
+}
+
+.manage_content {
+  float: right;
 }
 
