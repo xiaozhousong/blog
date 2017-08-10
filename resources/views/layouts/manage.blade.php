@@ -2,12 +2,12 @@
 <html lang="{{ app()->getLocale() }}">
 @include('partials._head')
 <body>
-    <div id="app">
+    <div class="" id="app">
         @include('partials._nav') 
         @include('partials._nav_manage') 
 
 
-        <div class="container"> 
+        <div class="container manage_content"> 
           @yield('content')  
         </div>
     </div>
