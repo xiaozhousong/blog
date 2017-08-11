@@ -38,6 +38,7 @@
 			<th></th>
 		</tr>
 	</thead>
+	<tbody>
 	@foreach($posts as $post)
 		<tr>
 			<th>{{$post->id}}</th>
@@ -48,32 +49,23 @@
 			<td>
 			<a href="{{ route('managepost.show', $post->id) }}" class="btn btn-block btn-default">View</a>
 			</td>
-			@role('superadministrator')
+			@permission('update-post')
 			    <td>
 				<a href="{{ route('managepost.edit', $post->id) }}" class="btn btn-block btn-default">Edit</a>
 				</td>
+			@endpermission
+			@permission('delete-post')
 				<td>
 				{!! Form::open(['route' => ['managepost.destroy', $post->id], 'method' => 'DELETE']) !!}
 	            {!! Form::submit('Delete', ['class' => 'btn btn-default btn-block']) !!}
 	            {!! Form::close() !!}
 				</td>
-			@endrole
-			@role('administrator')
-			    <td>
-				<a href="{{ route('managepost.edit', $post->id) }}" class="btn btn-block btn-default">Edit</a>
-				</td>
-				<td>
-				{!! Form::open(['route' => ['managepost.destroy', $post->id], 'method' => 'DELETE']) !!}
-	            {!! Form::submit('Delete', ['class' => 'btn btn-default btn-block']) !!}
-	            {!! Form::close() !!}
-				</td>
-			@endrole
-			
+			@endpermission
 			
 		</tr>
 	@endforeach
 
-	</tbaody>
+	</tbody>
 	
 </table>
 

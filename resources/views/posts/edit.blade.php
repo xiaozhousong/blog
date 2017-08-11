@@ -22,7 +22,7 @@
 
     <br>
 
-    {{ Form::submit('Submit',array('class' => 'btn btn-secondary btn-lg btn-block')) }}
+    {{ Form::submit('Submit',array('class' => 'btn btn-default btn-lg btn-block')) }}
 
 
 

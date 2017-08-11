@@ -1,8 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.manage')
 
 @section('content')
 
-<div class="container" role="main">
+<div class="" role="main">
 
 
 <div class="row">

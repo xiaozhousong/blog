@@ -7,7 +7,7 @@ use App\User;
 use DB;
 use Hash;
 use Session;
-
+use App\Role;
 
 
 class UserController extends Controller
@@ -31,7 +31,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('manage.users.create');
+        $roles = Role::all();
+        return view('manage.users.create',['roles' => $roles]);
     }
 
     /**
@@ -42,6 +43,8 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+
 
         $this->validate($request, [
             'name' => 'required|max:25',
@@ -55,6 +58,11 @@ class UserController extends Controller
         $user->password = Hash::make('password');
 
         $user->save();
+
+        $user->syncRoles($request->roles, $user->id);
+
+        $user->save();
+           
         // return redirect()->route('users.show', $user->id);
 
         if($user->save()){
@@ -87,7 +95,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        return view('manage.users.edit', ['user' => $user]);
+        $roles = Role::all();
+        return view('manage.users.edit', ['user' => $user],['roles' => $roles]);
     }
 
     /**
@@ -101,7 +110,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|max:25',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users',
             'password' =>'required|min:6'
            ]);
 
@@ -112,12 +121,19 @@ class UserController extends Controller
 
         $user->save();
 
+        $user->syncRoles($request->roles, $user->id);
+
+        $user->save();
+           
+        // return redirect()->route('users.show', $user->id);
+
         if($user->save()){
             return redirect()->route('users.show', $user->id);
         }else{
             Session::flash('danger', 'Sorry, there is an error');
             return redirect()->route('users.create');
         }
+
     }
 
     /**

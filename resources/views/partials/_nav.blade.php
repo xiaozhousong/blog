@@ -57,12 +57,17 @@
             </a>
           </li>
           @role('superadministrator')
-              <li class="">
-                <a href="{{ route('manage.index') }}">
-                  <i class="fa fa-tachometer" aria-hidden="true"></i>
-                  Manage User
-                </a>
-              </li>
+
+          <li class="dropdown">
+            <a href="{{ route('manage.index') }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-tachometer" aria-hidden="true"></i> Manage User <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="{{ route('manage.index') }}">User</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="{{ route('role.index') }}">Role</a></li>
+              <li><a href="{{ route('permission.index') }}">Permission</a></li>
+            </ul>
+          </li>
+
           @endrole
           @role('superadministrator')
               <li class="">

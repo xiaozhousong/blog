@@ -1,12 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.manage')
 
 @section('content')
 
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Create a new user</div>
+        <div class="col-md-12">
+            
+                <h1>Create a new user</h1>
+                <br>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('users.store') }}">
                         {{ csrf_field() }}
@@ -53,10 +54,25 @@
                             </div>
                         </div>
 
+                        <h3>Select roles</h3>
+                        <div class="form-group">
+                            @foreach($roles as $role)
+
+                            <label for="roleBtn{{$role->id}}" class="col-md-4"></label>
+
+                            <div class="col-md-6">
+                                <input class="" id="roleBtn{{$role->id}}" type="checkbox" name="roles[]" value="{{$role->id}}">
+                               {{$role->name}}
+                            
+                            </div>
+                            @endforeach
+                        </div>
+
+                       
                 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-default btn-lg btn-block">
                                     Create User
                                 </button>
 
@@ -65,7 +81,7 @@
                     </form>
                 </div>
             </div>
-        </div>
+        
     </div>
 </div>
 

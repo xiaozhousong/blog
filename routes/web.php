@@ -21,10 +21,11 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::prefix('manage')->middleware('role:superadministrator')->group(function(){
-	
 	Route::get('/', 'UserController@index');
 	Route::get('/dashboard', 'UserController@index')->name('manage.index');
 	Route::resource('/users','UserController');
+	Route::resource('/permission','PermissionController', ['except' => 'destroy']);
+	Route::resource('/role','RoleController', ['except' => 'destroy']);
 });
 Route::prefix('post')->middleware('role:superadministrator|administrator|user')->group(function(){
 	
