@@ -19,13 +19,3 @@ Permission – Roles is many to many relationship.
 Users – Roles is many to many relationship.
 User – Post is one to many relationship.
 (Please see graphic image in the folder, called relationship.png)
-
-I haven’t really concentrated on CSS due to short time to complete, but I have done a mobile app that is more concentrated on CSS.
-
-https://github.com/xiaozhousong/myapp_cityguide
-https://xiaozhousong.github.io/myapp_cityguide/dist/
-
-I appreciate your consideration and look forward to hearing from you soon.
-
-Kind Regards
-Xiaozhou Song
